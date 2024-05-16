@@ -20,6 +20,7 @@ class Player:
     def print_cards_in_hand(self):
         hand_string = ''
 
+        # for each card in hand, generate string to print it's proper name
         for i in range(len(self.get_hand())):
             hand_string += (
                 self.get_hand()[i].get_rank_name() 
@@ -27,6 +28,7 @@ class Player:
                 + self.get_hand()[i].get_suit_name()
             ).ljust(20)
         
+        # print the player name and the cards in their hand, with indentation to help readability
         print(f'  {self.get_name()} hand contained: ')
         print(f'    {hand_string}')
     
