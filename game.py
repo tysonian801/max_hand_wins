@@ -1,5 +1,3 @@
-# TODO: add this all to personal github repo
-
 from player import Player
 from deck import Deck
 
@@ -79,9 +77,9 @@ class Game:
         print()
         # print a message for which card won the round and which player it belongs to
         print(
-            f'Congratulations {strongest_cards_list[0].get_owner().get_name()}!'
-            , f'You win the round with "{strongest_cards_list[0].get_rank_name()}'
-            , f'of {strongest_cards_list[0].get_suit_name()}".'
+            f'Congratulations {strongest_cards_list[0].get_owner().get_name()}!',
+            f'You win the round with "{strongest_cards_list[0].get_rank_name()}',
+            f'of {strongest_cards_list[0].get_suit_name()}".'
         )
 
         # print cards in hand for each player
@@ -139,4 +137,5 @@ class Game:
             print()
             input('Press enter to continue.')
         
+        # after all cards have been dealt, declare a winner
         game.print_final_score()
