@@ -8,7 +8,7 @@ class Suit(IntEnum):
     spades = 4
 
 # define the priority/rank of each card rank, higher number = higher value
-class CardRank(IntEnum):
+class Rank(IntEnum):
     two = 2
     three = 3
     four = 4
@@ -25,16 +25,16 @@ class CardRank(IntEnum):
 
 # define a playing card class which contains rank and suit attributes
 class PlayingCard:
-    def __init__(self, rank: CardRank, suit: Suit):
+    def __init__(self, rank: Rank, suit: Suit):
         if type(suit) == Suit:
             self._suit = suit
         else:
             raise ValueError('Invalid suit type. Ensure type Suit is used for suit argument')
         
-        if type(rank) == CardRank:
+        if type(rank) == Rank:
             self._rank = rank
         else:
-            raise ValueError('Invalid card rank. Ensure type CardRank is used for rank argument')
+            raise ValueError('Invalid card rank. Ensure type Rank is used for rank argument')
     
     def get_rank_name(self):
         return self._rank.name

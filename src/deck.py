@@ -1,5 +1,5 @@
 from random import shuffle
-from src.card import PlayingCard, CardRank, Suit
+from src.card import PlayingCard, Rank, Suit
 from src.player import Player, Cheater
 
 class Deck:
@@ -14,7 +14,7 @@ class Deck:
         return len(self._cards)
     
     def shuffle(self):
-        all_ranks = list(CardRank)
+        all_ranks = list(Rank)
         all_suits = list(Suit)
 
         # fill the cards attribute with all 52 unique cards

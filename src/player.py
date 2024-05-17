@@ -1,5 +1,5 @@
 from random import randint
-from src.card import PlayingCard, CardRank, Suit
+from src.card import PlayingCard, Rank, Suit
 
 class Player:
     def __init__(self, name: str):
@@ -66,7 +66,7 @@ class Cheater(Player):
         # give 20% chance for cheater to add ace of spades to their hand
         if randint(0, 10) <= 2:
             print(f'\n{self.get_name()} snuck a card in their hand without anyone noticing.')
-            self._hand.append(PlayingCard(rank=CardRank.ace, suit=Suit.spades))
+            self._hand.append(PlayingCard(rank=Rank.ace, suit=Suit.spades))
             # assign ownership of the Ace of Spades to this player
             self.claim_card_ownership(self.get_hand()[-1])
         return super().strongest_hand()
