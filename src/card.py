@@ -1,5 +1,5 @@
 from enum import IntEnum
-from player import Player
+# from player import Player, Cheater
 
 # define the priority/rank of each suit, higher number = higher value
 class Suit(IntEnum):
@@ -51,12 +51,6 @@ class PlayingCard:
     
     def get_full_name(self):
         return self._rank.name + self._suit.name
-    
-    def assign_ownership(self, owner: Player):
-        if type(owner) == Player:
-            self._owner = owner
-        else:
-            raise ValueError('Attempting to assign ownership to invalid object. Must be a player.')
-    
+
     def get_owner(self):
         return self._owner
