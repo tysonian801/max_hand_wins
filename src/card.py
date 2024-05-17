@@ -1,5 +1,4 @@
 from enum import IntEnum
-# from player import Player, Cheater
 
 # define the priority/rank of each suit, higher number = higher value
 class Suit(IntEnum):
