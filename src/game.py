@@ -1,5 +1,5 @@
-from player import Player
-from deck import Deck
+from src.deck import Deck
+from src.player import Player, Cheater
 
 class Game:
     def __init__(self, player_count: int, hand_size: int):
@@ -15,8 +15,21 @@ class Game:
             while player_name in self.get_players_names():
                 print(f'Invalid name. {player_name} already taken, please choose another name.')
                 player_name = input(f'What is the name of player {i + 1}?: ')
-                
-            self._players.append(Player(name=player_name))
+
+            # prompts if player is a cheater
+            is_cheater = input(f'Is this player an honest player?: (yes/no) ')
+
+            # validates the is_cheater response is a valid response
+            while type(is_cheater) != str or is_cheater.lower().strip() not in ['yes', 'no']:
+                print('Response must be "yes" or "no", please enter a new value')
+                is_cheater = input(f'Is this player an honest player?: (yes/no) ')
+            
+            # if this player is a cheater, create a player under the Cheater subclass
+            if is_cheater.lower().strip() == 'no':
+                self._players.append(Cheater(name=player_name))
+            # if this player is not a cheater, create player under the standard Player class
+            elif is_cheater.lower().strip() == 'yes':
+                self._players.append(Player(name=player_name))
 
         # initialize a deck for the game
         self._deck = Deck()
@@ -69,7 +82,7 @@ class Game:
         strongest_cards_list.sort(
             key=lambda card: (card.get_rank_value(), card.get_suit_value()), reverse=True
         )
-        
+
         # add a point for the player who won the round
         strongest_cards_list[0].get_owner().increment_score()
 

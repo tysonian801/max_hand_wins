@@ -1,6 +1,6 @@
-from card import PlayingCard, CardRank, Suit
 from random import shuffle
-from player import Player
+from src.card import PlayingCard, CardRank, Suit
+from src.player import Player, Cheater
 
 class Deck:
     def __init__(self):
@@ -25,7 +25,7 @@ class Deck:
         # randomize the order of the cards attribute
         shuffle(self._cards)
     
-    def draw_cards(self, quantity: int, owner: Player):     
+    def draw_cards(self, quantity, owner):     
         # initialize hand list
         hand_drawn = []
 
@@ -37,7 +37,7 @@ class Deck:
                     # return the first card in the deck and remove it from the list
                     card_drawn = self._cards.pop(0)
 
-                    if type(owner) == Player:
+                    if type(owner) in [Player, Cheater]:
                         # assign ownership of this card to the player it was dealt to
                         card_drawn._owner = owner
 
