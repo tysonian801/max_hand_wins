@@ -1,3 +1,4 @@
 from src.game import Game
 
-Game.play_game()
+if __name__ == '__main__':
+    Game.play_game()
