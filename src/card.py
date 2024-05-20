@@ -53,3 +53,33 @@ class PlayingCard:
 
     def get_owner(self):
         return self._owner
+    
+    def __eq__(self, value):
+        # only equal if both rank and suit are the same
+        return (
+            self.get_rank_value() == value.get_rank_value()
+            and self.get_suit_value() == value.get_suit_value()
+        )
+    
+    def __gt__(self, value):
+        # if rank is greater, then suit is irrelevant
+        if self.get_rank_value() > value.get_rank_value():
+            return True
+        # if rank is the same, check suit to determine which is greater
+        elif self.get_rank_value() == value.get_rank_value():
+            return self.get_suit_value() > value.get_suit_value()
+        else:
+            return False
+    
+    # using above defined equals and greater than magic methods, define greater than or equal to
+    def __ge__(self, value):
+        if self == value:
+            return True
+        elif self > value:
+            return True
+        else:
+            return False
+    
+    # change the way cards are printed by default to print (Rank, Suit)
+    def __str__(self):
+        return(f'({self.get_rank_name()}, {self.get_suit_name()})')
